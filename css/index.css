@@ -1,3 +1,15 @@
+:root {
+    /* Color palette */
+    --primary: #84290a;
+    --primary-light: #ba5634;
+    --primary-dark: #530000;
+    --primary-text: #ffffff;
+    --secondary: #37474f;
+    --secondary-light: #62727b;
+    --secondary-dark: #102027;
+    --secondary-text: #ffffff;
+}
+
 html, body{
     position: absolute;
     top: 0;
@@ -11,6 +23,6 @@ html, body{
 
 body{
     font-family: Arial, sans-serif;
-    background-color: #94312c;
-    color: white;
+    background-color: var(--primary);
+    color: var(--primary-text);
 }
