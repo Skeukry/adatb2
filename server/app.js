@@ -4,12 +4,11 @@ const CWD = 'file://' + process.cwd();
 let window;
 
 app.on('ready', createWindow);
-app.on('window-all-closed', () => app.quit());
-database.connect();
+// database.connect();
+// app.on('will-quit', database.close);
 
 // Create the browser window.
 function createWindow(){
-    console.log(CWD);
     Menu.setApplicationMenu(null);
 
     window = new BrowserWindow({
