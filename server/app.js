@@ -1,5 +1,5 @@
 const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
-const database = require('./database');
+const database = require('./database.js');
 const CWD = 'file://' + process.cwd();
 let window;
 
