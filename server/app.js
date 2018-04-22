@@ -1,5 +1,5 @@
 const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
-const database = require('./database.js');
+// const database = require('./database.js');
 const CWD = 'file://' + process.cwd();
 let window;
 
@@ -13,7 +13,7 @@ function createWindow(){
 
     window = new BrowserWindow({
         title: 'TrainGod',
-        backgroundColor: '#94312c',
+        backgroundColor: '#84290A',
         show: false,
         width: 1024,
         height: 768,

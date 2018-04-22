@@ -1,8 +1,17 @@
 {
     "name": "TrainGod",
+    "description": "Railway management system",
     "version": "1.1.1",
+
+    "contributors": [
+        "Ferenc Kálmán",
+        "Gábor Timár"
+    ],
+
     "main": "server/app.js",
+    "repository": "github:Skeukry/adatb2",
     "license": "MIT",
+
     "dependencies": {
         "electron": "^1.8.3",
         "mav": "^0.0.0",

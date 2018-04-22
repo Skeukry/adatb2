@@ -1,13 +1,14 @@
-:root {
+:root{
     /* Color palette */
-    --primary: #84290a;
-    --primary-light: #ba5634;
+    /* bit.ly/2Hl4Lms */
+    --primary: #84290A;
+    --primary-light: #BA5634;
     --primary-dark: #530000;
-    --primary-text: #ffffff;
-    --secondary: #37474f;
-    --secondary-light: #62727b;
+    --primary-text: #FFFFFF;
+    --secondary: #37474F;
+    --secondary-light: #62727B;
     --secondary-dark: #102027;
-    --secondary-text: #ffffff;
+    --secondary-text: #FFFFFF;
 }
 
 html, body{
