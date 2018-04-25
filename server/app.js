@@ -1,11 +1,11 @@
 const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
-// const database = require('./database.js');
+const database = require('./database.js');
 const CWD = 'file://' + process.cwd();
 let window;
 
 app.on('ready', createWindow);
-// database.connect();
-// app.on('will-quit', database.close);
+database.connect();
+app.on('will-quit', database.close);
 
 // Create the browser window.
 function createWindow(){
