@@ -1,11 +1,42 @@
 const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
-const database = require('./database.js');
+const database = require('child_process').fork('server/database.js');
 const CWD = 'file://' + process.cwd();
 let window;
 
 app.on('ready', createWindow);
-database.connect();
-app.on('will-quit', database.close);
+
+database.send('connect');
+app.on('window-all-closed', () =>{
+    let force = null;
+    console.log('PEACEFUL');
+    database.send('close');
+
+    // FUCK THIS SHIT ~Feca at 5.32AM
+    Promise.race([
+        new Promise(res => database.on('exit', res)),
+        new Promise(res =>{
+            force = setTimeout(() =>{
+                console.log('HARSH');
+                database.kill('SIGTERM');
+                res();
+            }, 1000);
+        }).then(() => new Promise(res =>{
+            force = setTimeout(() =>{
+                console.log('BRUTAL');
+                database.kill('SIGINT');
+                res();
+            }, 1000);
+        })).then(() => new Promise((res, rej) =>{
+            force = setTimeout(rej, 1000);
+        }))
+    ]).then(() =>{
+        clearTimeout(force);
+        app.quit();
+    }).catch(() =>{
+        console.log('Failed to quit automatically.');
+    });
+});
+
 
 // Create the browser window.
 function createWindow(){
