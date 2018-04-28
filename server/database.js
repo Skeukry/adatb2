@@ -6,12 +6,13 @@ const dbConfig = {
     connectString: `${config.host}:${config.port}/XE`
 };
 let connection;
+let FgGreen = "\x1b[32m";
 
 module.exports = {
     connect(){
         oracledb.getConnection(dbConfig).then(c =>{
             connection = c;
-            console.log('Connected to Oracle database');
+            console.log(FgGreen, 'Connected to Oracle database');
         }).catch(console.log);
     },
 
