@@ -6,7 +6,7 @@ const dbConfig = {
     connectString: `${config.host}:${config.port}/XE`
 };
 let connection;
-let FgGreen = "\x1b[32m";
+let FgGreen = "\x1b[32m%s\x1b[0m";
 
 module.exports = {
     connect(){
