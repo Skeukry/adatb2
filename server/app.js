@@ -41,6 +41,7 @@ app.on('window-all-closed', () =>{
 // Create the browser window.
 function createWindow(){
     Menu.setApplicationMenu(null);
+    app.setName("TrainGod");
 
     window = new BrowserWindow({
         title: 'TrainGod',
@@ -51,7 +52,7 @@ function createWindow(){
         minWidth: 320,
         minHeight: 240,
         webPreferences: {devTools: true},
-        icon: CWD + '/img/icon.ico'
+        icon: __dirname + '/train.png'
     });
 
     globalShortcut.register('F12', () => window.toggleDevTools());
