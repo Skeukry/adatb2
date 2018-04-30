@@ -1,29 +1,30 @@
-:root{
-    /* Color palette */
-    /* bit.ly/2Hl4Lms */
-    --primary: #84290A;
-    --primary-light: #BA5634;
-    --primary-dark: #530000;
-    --primary-text: #FFFFFF;
-    --secondary: #37474F;
-    --secondary-light: #62727B;
-    --secondary-dark: #102027;
-    --secondary-text: #FFFFFF;
+div {
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    padding: 20px;
 }
 
-html, body{
-    position: absolute;
-    top: 0;
-    left: 0;
+input[type=text] {
     width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-body{
-    font-family: Arial, sans-serif;
-    background-color: var(--primary);
+input[type=submit] {
+    width: 50%;
+    background-color: var(--secondary);
     color: var(--primary-text);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: var(--secondary-dark);
 }

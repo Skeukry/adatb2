@@ -9,16 +9,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="../css/_common.css">
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/admin.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Andika|Montserrat">
     </head>
 
     <body>
         <ul>
-            <li class="active_menu"><a>Kezdőoldal</a></li>
+            <li><a href="index.html">Kezdőoldal</a></li>
             <li><a href="schedule.html">Menetrend</a></li>
             <li><a href="statistics.html">Statisztika</a></li>
-            <li class="admin"><a href="admin.html">Adminisztráció</a></li>
+            <li class="admin active_menu"><a>Adminisztráció</a></li>
         </ul>
 
         <div class="primary_content">
@@ -26,24 +26,6 @@
             We are using node <strong><script>document.write(process.versions.node)</script></strong>,
             Chrome <strong><script>document.write(process.versions.chrome)</script></strong>,
             and Electron <strong><script>document.write(process.versions.electron)</script></strong>.
-            <br>
-            <br>
-
-            <label>
-                Honnan:<br>
-                <input type="text" name="start">
-                Hová:<br>
-                <input type="text" name="destination">
-                Mikor:<br>
-                <input id="date" type="date">
-            </label><br>
-            <input type="submit" onclick="youClickedOnMe()" value="Keres">
-
-            <script>
-                function youClickedOnMe() {
-                    alert("HAHA you expected it will work, right?")
-                }
-            </script>
         </div>
     </body>
 </html>
