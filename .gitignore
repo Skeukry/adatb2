@@ -4,4 +4,3 @@ node_modules/
 /*.iml
 !/.gitignore
 /server/config.json
-/server/*.png
