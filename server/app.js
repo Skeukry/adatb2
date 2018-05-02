@@ -1,6 +1,7 @@
 const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
 const database = require('child_process').fork('server/database.js');
-const CWD = 'file://' + process.cwd();
+const CWD = process.cwd();
+const FILE_PATH = 'file://' + CWD;
 let window;
 
 database.send('connect');
@@ -25,8 +26,9 @@ function createWindow(){
         icon: CWD + '/img/icon.png'
     });
 
+    window.loadURL(FILE_PATH + '/html/index.html');
     globalShortcut.register('F12', () => window.toggleDevTools());
-    window.loadURL(CWD + '/html/index.html');
+
     window.once('ready-to-show', () =>{
         // window.maximize();
         window.show();
