@@ -1,8 +1,7 @@
 {
     "name": "TrainGod",
     "description": "Railway management system",
-    "version": "1.2.0",
-
+    "version": "1.2.1",
     "contributors": [
         "Ferenc Kálmán",
         "Gábor Timár"
@@ -13,7 +12,7 @@
     "license": "MIT",
 
     "dependencies": {
-        "electron": "^1.8.6",
+        "electron": "^2.0.0",
         "mav": "^0.0.0",
         "oracledb": "^2.2.0"
     }

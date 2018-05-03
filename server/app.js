@@ -20,8 +20,8 @@ function createWindow(){
         show: false,
         width: 1024,
         height: 768,
-        minWidth: 320,
-        minHeight: 240,
+        minWidth: 640,
+        minHeight: 480,
         webPreferences: {devTools: true},
         icon: CWD + '/img/icon.png'
     });
