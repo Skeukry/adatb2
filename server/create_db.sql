@@ -28,9 +28,9 @@ CREATE TABLE Atszallas(
 
 CREATE TABLE Arkategoria(
     ar NUMBER(5) NOT NULL,
-    címke VARCHAR2(50) NOT NULL,
+    cimke VARCHAR2(50) NOT NULL,
     jaratszam NUMBER NOT NULL,
-    PRIMARY KEY(jaratszam, címke),
+    PRIMARY KEY(jaratszam, cimke),
     FOREIGN KEY(jaratszam) REFERENCES Jarat(jaratszam)
 );
 
@@ -44,11 +44,11 @@ CREATE TABLE Kedvezmeny(
 CREATE TABLE Jegy(
     uuid VARCHAR2(36) NOT NULL,
     utas_neve VARCHAR2(100) NOT NULL,
-    kocsi_osztaly VARCHAR2(50) NOT NULL,
+    kocsiosztaly VARCHAR2(50) NOT NULL,
     jaratszam NUMBER NOT NULL,
     kedvezmeny NUMBER NOT NULL,
     PRIMARY KEY(uuid),
-    FOREIGN KEY(kocsi_osztaly) REFERENCES Arkategoria(címke),
+    FOREIGN KEY(kocsiosztaly) REFERENCES Arkategoria(cimke),
     FOREIGN KEY(jaratszam) REFERENCES Jarat(jaratszam),
     FOREIGN KEY(kedvezmeny) REFERENCES Kedvezmeny(id)
 );
