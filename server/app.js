@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu, globalShortcut} = require('electron');
+const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron');
 const database = require('child_process').fork('server/database.js');
 const CWD = process.cwd();
 const FILE_PATH = 'file://' + CWD;
@@ -7,6 +7,10 @@ let window;
 database.send('connect');
 app.on('ready', createWindow);
 app.on('window-all-closed', handleClose);
+
+ipcMain.on('update', ()=>{
+    console.log('BUTTON CLICKED');
+});
 
 
 // Create the browser window.
@@ -23,6 +27,7 @@ function createWindow(){
         minWidth: 640,
         minHeight: 480,
         webPreferences: {devTools: true},
+        nodeIntegration: false,
         icon: CWD + '/img/icon.png'
     });
 

@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta name="theme-color" content="#84290A">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:">
 
         <link rel="stylesheet" href="../css/_common.css">
         <link rel="stylesheet" href="../css/index.css">
@@ -22,26 +23,21 @@
         </ul>
 
         <div class="primary_content">
-            <h1>Hello World!</h1>
-            We are using node <strong><script>document.write(process.versions.node)</script></strong>,
-            Chrome <strong><script>document.write(process.versions.chrome)</script></strong>,
-            and Electron <strong><script>document.write(process.versions.electron)</script></strong>.
-            <br>
-            <br>
+            <h1>Járat kereső</h1>
 
-            <label>
-                Honnan:<br>
-                <input type="text" name="start">
-                Hová:<br>
-                <input type="text" name="destination">
-                Mikor:<br>
-                <input id="date" type="date">
-            </label><br>
-            <input type="submit" onclick="youClickedOnMe()" value="Keres">
+            <form>
+                <label>Honnan: <input type="text" name="start"></label><br>
+                <label>Hová: <input type="text" name="destination"></label><br>
+                <label>Mikor: <input id="date" type="date"></label><br>
+                <input value="Keres" type="submit" onclick="sendUpdate(event)">
+            </form>
 
             <script>
-                function youClickedOnMe() {
-                    alert("HAHA you expected it will work, right?")
+                function sendUpdate(e){
+                    const {ipcRenderer} = require('electron');
+                    ipcRenderer.send('update');
+                    console.log('SENT');
+                    e.preventDefault();
                 }
             </script>
         </div>
