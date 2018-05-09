@@ -1,20 +1,20 @@
-div {
+div{
     border-radius: 5px;
     background-color: var(--primary-light);
     padding: 20px;
 }
 
-input[type=text] {
+input[type=text]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #CCCCCC;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=submit]{
     width: 50%;
     background-color: var(--secondary);
     color: var(--primary-text);
@@ -25,6 +25,6 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover{
     background-color: var(--secondary-dark);
 }

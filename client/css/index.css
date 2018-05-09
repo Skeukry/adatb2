@@ -5,13 +5,10 @@
     --primary-light: #BA5634;
     --primary-dark: #530000;
     --primary-text: #FFFFFF;
-
     --secondary: #37474F;
     --secondary-light: #62727B;
     --secondary-dark: #102027;
     --secondary-text: #FFFFFF;
-
-
     --primary-font: 'Montserrat', sans-serif;
     /* The secondary font maybe not suitable for us because of the Latin char support */
     --secondary-font: 'Andika', sans-serif;
@@ -34,7 +31,11 @@ body{
     color: var(--primary-text);
 }
 
-ul{
+a{
+    cursor: pointer;
+}
+
+#nav{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -42,11 +43,15 @@ ul{
     background-color: var(--primary-dark);
 }
 
-li{
+#nav li{
     float: left;
 }
 
-li a{
+#nav li.admin{
+    float: right;
+}
+
+#nav li a{
     display: block;
     color: var(--primary-text);
     text-align: center;
@@ -54,18 +59,15 @@ li a{
     text-decoration: none;
 }
 
-li a:hover{
+#nav li a:hover{
     background-color: var(--secondary-dark);
 }
 
-.active_menu{
+#nav li.active_menu{
     background-color: var(--secondary);
 }
 
-.admin{
-    float: right;
-}
-
-.primary_content{
+#section{
     margin: 5%;
 }
+
