@@ -1,4 +1,6 @@
 const crypto = require('crypto');
+const fs = require('fs');
+const mav = require('mav');
 const config = require('./config.json');
 let client;
 
@@ -15,7 +17,13 @@ module.exports = {
         });
     },
 
-    close: handleClose
+    close: handleClose,
+
+    update: () =>{
+        mav.stations().then(stations => {
+            createLog('stations.json', JSON.stringify(stations, null, 4));
+        });
+    }
 };
 
 
@@ -52,5 +60,12 @@ function handleClose(cb){
     client.on('exit', () =>{
         clearTimeout(force);
         cb(false);
+    });
+}
+
+function createLog(name, data){
+    fs.mkdir('log', err => {
+        if(err && err.code !== 'EEXIST') return;
+        fs.writeFile('log/' + name, data, err => {});
     });
 }

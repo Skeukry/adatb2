@@ -9,7 +9,7 @@ app.on('ready', createWindow);
 app.on('window-all-closed', () => database.close(err =>{
     if(!err) app.quit();
 }));
-// ipcMain.on('update', database.update);
+ipcMain.on('update', database.update);
 
 
 // Create the browser window.
