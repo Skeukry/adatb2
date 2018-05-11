@@ -32,18 +32,18 @@ CREATE TABLE Atszallas (
 /
 
 CREATE TABLE Arkategoria (
-  ar        NUMBER(5)    NOT NULL,
-  cimke     VARCHAR2(50) NOT NULL,
-  jaratszam NUMBER       NOT NULL,
+  ar        NUMBER(5)     NOT NULL,
+  cimke     VARCHAR2(100) NOT NULL,
+  jaratszam NUMBER        NOT NULL,
   PRIMARY KEY (jaratszam, cimke),
   FOREIGN KEY (jaratszam) REFERENCES Jarat (jaratszam)
 );
 /
 
 CREATE TABLE Kedvezmeny (
-  id     NUMBER       NOT NULL,
-  szorzo BINARY_FLOAT NOT NULL,
-  nev    VARCHAR2(50) NOT NULL,
+  id     NUMBER        NOT NULL,
+  szorzo BINARY_FLOAT  NOT NULL,
+  nev    VARCHAR2(100) NOT NULL,
   PRIMARY KEY (id)
 );
 /
