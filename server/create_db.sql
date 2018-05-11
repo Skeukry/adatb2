@@ -1,14 +1,14 @@
 --- Create table statements ---
 
 CREATE TABLE Allomas (
-  id        NUMBER       NOT NULL,
-  nev       VARCHAR2(50) NOT NULL,
+  id        NUMBER        NOT NULL,
+  nev       VARCHAR2(100) NOT NULL,
   szelesseg BINARY_FLOAT,
   hosszusag BINARY_FLOAT,
   PRIMARY KEY (id)
 );
-
 /
+
 CREATE TABLE Jarat (
   jaratszam     NUMBER NOT NULL,
   uthossz       NUMBER(5),
@@ -20,8 +20,8 @@ CREATE TABLE Jarat (
   FOREIGN KEY (indulasi_hely) REFERENCES Allomas (id),
   FOREIGN KEY (erkezesi_hely) REFERENCES Allomas (id)
 );
-
 /
+
 CREATE TABLE Atszallas (
   ido       DATE,
   hely      NUMBER NOT NULL,
@@ -29,8 +29,8 @@ CREATE TABLE Atszallas (
   FOREIGN KEY (hely) REFERENCES Allomas (id),
   FOREIGN KEY (jaratszam) REFERENCES Jarat (jaratszam)
 );
-
 /
+
 CREATE TABLE Arkategoria (
   ar        NUMBER(5)    NOT NULL,
   cimke     VARCHAR2(50) NOT NULL,
@@ -38,16 +38,16 @@ CREATE TABLE Arkategoria (
   PRIMARY KEY (jaratszam, cimke),
   FOREIGN KEY (jaratszam) REFERENCES Jarat (jaratszam)
 );
-
 /
+
 CREATE TABLE Kedvezmeny (
   id     NUMBER       NOT NULL,
   szorzo BINARY_FLOAT NOT NULL,
   nev    VARCHAR2(50) NOT NULL,
   PRIMARY KEY (id)
 );
-
 /
+
 CREATE TABLE Jegy (
   uuid         VARCHAR2(36)  NOT NULL,
   utas_neve    VARCHAR2(100) NOT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE Jegy (
 --- Auto increment triggers ---
 
 CREATE SEQUENCE Allomas_seq;
-
 /
+
 CREATE OR REPLACE TRIGGER Allomas_trig
   BEFORE INSERT
   ON Allomas
@@ -73,11 +73,11 @@ CREATE OR REPLACE TRIGGER Allomas_trig
   BEGIN
     :new.id := Allomas_seq.NEXTVAL;
   END;
-
 /
+
 CREATE SEQUENCE Jarat_seq;
-
 /
+
 CREATE OR REPLACE TRIGGER Jarat_trig
   BEFORE INSERT
   ON Jarat
@@ -86,11 +86,11 @@ CREATE OR REPLACE TRIGGER Jarat_trig
   BEGIN
     :new.jaratszam := Jarat_seq.NEXTVAL;
   END;
-
 /
+
 CREATE SEQUENCE Kedvezmeny_seq;
-
 /
+
 CREATE OR REPLACE TRIGGER Kedvezmeny_trig
   BEFORE INSERT
   ON Kedvezmeny
