@@ -1,0 +1,53 @@
+<h1>Jegyvásárlás</h1>
+
+<form>
+    <div class="flex">
+        <div class="flex_row">
+            <div class="flex_row-left">
+                <p>Jegy típusa</p>
+            </div>
+            <div class="flex_row-right">
+                <label><input type="radio" name="ticket_type" value="1">menetjegy és pót/helyjegy</label><br>
+                <label><input type="radio" name="ticket_type" value="2">csak pót/helyjegy</label><br>
+                <label><input type="radio" name="ticket_type" value="3">csak kocsiosztály különbözeti jegy</label><br>
+            </div>
+        </div>
+        <!--<hr>-->
+        <div class="flex_row">
+            <div class="flex_row-left">
+                <p>Utazás jellege</p>
+            </div>
+            <div class="flex_row-right">
+                <label><input type="radio" name="travel" value="one_way">egy útra</label><br>
+                <label><input type="radio" name="travel" value="return">menettéri</label><br>
+            </div>
+        </div>
+        <!--<hr>-->
+        <div class="flex_row">
+            <div class="flex_row-left">
+                <p>Kedvezmény</p>
+            </div>
+            <div class="flex_row-right">
+                <select title="Válassz egyet!">
+                    <!--TODO add DB output here as options-->
+                    <optgroup label="placeholder0">
+                        <option value="a">placeholder1</option>
+                        <option value="s">placeholder2</option>
+                        <option value="d">placeholder3</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <!--<hr>-->
+        <div class="flex_row">
+            <div class="flex_row-left">
+                <p>Kocsiosztály</p>
+            </div>
+            <div class="flex_row-right">
+                <label><input type="radio" name="carriage_class" value="1">1. osztály</label><br>
+                <label><input type="radio" name="carriage_class" value="2">2. osztály</label><br>
+            </div>
+        </div>
+    </div>
+    <input id="btn" value="Fizetés" type="submit" onclick="sendUpdate(event)">
+</form>

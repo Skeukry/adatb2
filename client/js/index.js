@@ -13,7 +13,7 @@ loadPage(links[0]);
 // Make named links clickable
 window.addEventListener('click', e =>{
     const node = e.target;
-    console.log(node.tagName);
+    console.log('tagName: ' + node.tagName);
     if(node.tagName !== 'A' || !node.name) return;
 
     loadPage(node);
@@ -31,10 +31,24 @@ function loadPage(link){
 
     document.title = 'TrainGod - ' + link.innerText;
     document.getElementById('pageStyle').href = `../css/${link.name}.css`;
+
+    //TODO Feca pls use magic and remove the timeout
+    setTimeout(function(){
+        setMinDate()
+    }, 50);
 }
 
 function sendUpdate(e){
     ipcRenderer.send('update');
     console.log('SENT');
     e.preventDefault();
+}
+
+function setMinDate(){
+    const today = new Date().toISOString().substr(0, 10);
+    const date = document.querySelector("#date");
+    if (date != null){          // when html contains date element
+        date.min = today;
+        date.value = today;
+    }
 }

@@ -35,6 +35,11 @@ a{
     cursor: pointer;
 }
 
+input{
+    font-size: 16px;
+    font-family: var(--primary-font);
+}
+
 #nav{
     list-style-type: none;
     margin: 0;
