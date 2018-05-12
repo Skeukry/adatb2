@@ -1,34 +1,27 @@
 <h1>Jegyvásárlás</h1>
 
 <form>
+    <label>Utas neve<input type="text" name="passenger_name" required></label><br>
     <div class="flex">
         <div class="flex_row">
             <div class="flex_row-left">
                 <p>Jegy típusa</p>
             </div>
             <div class="flex_row-right">
-                <label><input type="radio" name="ticket_type" value="1">menetjegy és pót/helyjegy</label><br>
-                <label><input type="radio" name="ticket_type" value="2">csak pót/helyjegy</label><br>
-                <label><input type="radio" name="ticket_type" value="3">csak kocsiosztály különbözeti jegy</label><br>
+                <label><input type="radio" name="ticket_type" value="1" required>menetjegy és helyjegy</label><br>
+                <label><input type="radio" name="ticket_type" value="2" required>csak helyjegy</label><br>
+
+                <!--TODO check if we need this-->
+                <label><input type="radio" name="ticket_type" value="3" required>csak kocsiosztály különbözeti jegy</label><br>
+
             </div>
         </div>
-        <!--<hr>-->
-        <div class="flex_row">
-            <div class="flex_row-left">
-                <p>Utazás jellege</p>
-            </div>
-            <div class="flex_row-right">
-                <label><input type="radio" name="travel" value="one_way">egy útra</label><br>
-                <label><input type="radio" name="travel" value="return">menettéri</label><br>
-            </div>
-        </div>
-        <!--<hr>-->
         <div class="flex_row">
             <div class="flex_row-left">
                 <p>Kedvezmény</p>
             </div>
             <div class="flex_row-right">
-                <select title="Válassz egyet!">
+                <select title="Válassz egyet!" required>
                     <!--TODO add DB output here as options-->
                     <optgroup label="placeholder0">
                         <option value="a">placeholder1</option>
@@ -38,14 +31,25 @@
                 </select>
             </div>
         </div>
-        <!--<hr>-->
         <div class="flex_row">
             <div class="flex_row-left">
                 <p>Kocsiosztály</p>
             </div>
             <div class="flex_row-right">
-                <label><input type="radio" name="carriage_class" value="1">1. osztály</label><br>
-                <label><input type="radio" name="carriage_class" value="2">2. osztály</label><br>
+                <label><input type="radio" name="carriage_class" value="1" required>1. osztály</label><br>
+                <label><input type="radio" name="carriage_class" value="2" required>2. osztály</label><br>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="flex">
+        <div class="flex_row">
+            <div class="flex_row-left">
+                <p>Fizetendő:</p>
+            </div>
+            <div class="flex_row-right">
+                <!--TODO add DB output here as the amount to be paid-->
+                <p>1000 Ft</p>
             </div>
         </div>
     </div>

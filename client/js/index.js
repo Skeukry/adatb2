@@ -45,8 +45,14 @@ function sendUpdate(e){
 }
 
 function setMinDate(){
-    const today = new Date().toISOString().substr(0, 10);
+    let today = new Date();
+    const offset = today.getTimezoneOffset()/-60;
+
+    today.setHours(today.getHours() + offset);
+    today = today.toISOString().substr(0, 10);
+
     const date = document.querySelector("#date");
+
     if (date != null){          // when html contains date element
         date.min = today;
         date.value = today;
