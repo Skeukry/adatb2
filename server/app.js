@@ -4,12 +4,14 @@ const CLIENT = process.cwd() + '/client';
 let window;
 
 
-database.connect();
 app.on('ready', createWindow);
 app.on('window-all-closed', () => database.close(err =>{
     if(!err) app.quit();
 }));
-ipcMain.on('update', database.update);
+
+database.connect();
+database.onData(data => ipcMain.send('message', data));
+ipcMain.on('message', (e, data) => database.sendData(data));
 
 
 // Create the browser window.

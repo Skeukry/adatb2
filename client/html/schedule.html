@@ -1,8 +1,8 @@
 <h1>Járat kereső</h1>
 
-<form>
+<form onsubmit="getJourneys(event)">
     <label>Honnan<input type="text" name="from" required></label><br>
     <label>Hová<input type="text" name="to" required></label><br>
     <label>Mikor <input type="date" name="time" required></label><br>
-    <input value="Keres" type="submit" onclick="sendUpdate(event)">
+    <input value="Keres" type="submit">
 </form>

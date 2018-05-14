@@ -20,9 +20,15 @@ window.addEventListener('click', e =>{
     e.preventDefault();
 });
 
-// Temporary
-function sendUpdate(e){
-    ipcRenderer.send('update');
+// Request journeys
+function getJourneys(e){
+    const data = e.target.elements;
+    ipcRenderer.send('message', {
+        type: 'search',
+        from: data.from.value,
+        to: data.to.value,
+        time: data.time.value
+    });
     e.preventDefault();
 }
 

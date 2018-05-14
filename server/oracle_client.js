@@ -1,4 +1,6 @@
 const oracledb = require('oracledb');
+const sql = require('./sql.json');
+
 const FG_GREEN = '\x1b[32m%s\x1b[0m';
 let connection;
 
@@ -6,10 +8,15 @@ let connection;
 process.on('message', msg =>{
     switch(msg.type){
         case 'connect':
+            oracledb.autoCommit = true;
             oracledb.getConnection(msg.config).then(c =>{
                 connection = c;
                 console.log(FG_GREEN, 'Connected to Oracle database');
             }).catch(console.log);
+            break;
+
+        case 'data':
+            handleData(msg.data);
             break;
 
         case 'close':
@@ -19,3 +26,13 @@ process.on('message', msg =>{
             break;
     }
 });
+
+function handleData(data){
+    switch(data.type){
+        case 'search':
+            connection.execute(sql.getJourneys, [data.from, data.to, new Date(data.time)]).then(res =>{
+                console.log(res.rows);
+            });
+            break;
+    }
+}

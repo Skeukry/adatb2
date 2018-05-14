@@ -1,0 +1,3 @@
+{
+    "getJourneys": "SELECT jaratszam, uthossz, indulasi_ido, erkezesi_ido FROM Jarat INNER JOIN Allomas src ON src.id = indulasi_hely INNER JOIN Allomas dst ON dst.id = erkezesi_hely WHERE src.nev = :ih AND dst.nev = :eh AND indulasi_ido >= :ii"
+}
