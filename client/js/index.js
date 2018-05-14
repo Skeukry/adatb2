@@ -20,10 +20,42 @@ window.addEventListener('click', e =>{
     e.preventDefault();
 });
 
+
 // Handle incoming data
 ipcRenderer.on('message', (e, data) =>{
-    console.log(data);
+    switch(data.type){
+        case 'search':
+            document.getElementById('results').innerText = JSON.stringify(data.data, null, 4);
+            break;
+
+        case 'suggestion':
+            if(suggInfo && suggInfo.i.value !== suggInfo.v){
+                const inp = suggInfo.i;
+                suggInfo = false;
+                getSuggestion(inp);
+            }else suggInfo = false;
+
+            document.getElementById('results').innerText = data.value;
+            break;
+    }
 });
+
+// Handle suggestions
+let suggInfo = false;
+
+function getSuggestion(inp){
+    if(suggInfo || inp.value.length < 3) return;
+
+    suggInfo = {
+        i: inp,
+        v: inp.value
+    };
+
+    ipcRenderer.send('message', {
+        type: 'suggestion',
+        value: suggInfo.v
+    });
+}
 
 // Request journeys
 function getJourneys(e){
@@ -51,7 +83,7 @@ function loadPage(link){
 
             let now = new Date();
             now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-            now = now.toJSON().slice(0,10);
+            now = now.toJSON().slice(0, 10);
 
             inp.value = now;
             inp.min = now;

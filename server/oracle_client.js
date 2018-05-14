@@ -34,5 +34,11 @@ function handleData(data){
                 process.send({type: data.type, data: res.rows});
             });
             break;
+
+        case 'suggestion':
+            connection.execute(sql.getSuggestion, [data.value]).then(res =>{
+                process.send({type: data.type, value: res.rows});
+            });
+            break;
     }
 }
