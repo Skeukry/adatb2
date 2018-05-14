@@ -31,7 +31,7 @@ function handleData(data){
     switch(data.type){
         case 'search':
             connection.execute(sql.getJourneys, [data.from, data.to, new Date(data.time)]).then(res =>{
-                console.log(res.rows);
+                process.send({type: data.type, data: res.rows});
             });
             break;
     }

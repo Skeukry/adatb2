@@ -10,7 +10,7 @@ app.on('window-all-closed', () => database.close(err =>{
 }));
 
 database.connect();
-database.onData(data => ipcMain.send('message', data));
+database.onData(data => window.webContents.send('message', data));
 ipcMain.on('message', (e, data) => database.sendData(data));
 
 

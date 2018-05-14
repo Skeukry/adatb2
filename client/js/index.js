@@ -20,6 +20,11 @@ window.addEventListener('click', e =>{
     e.preventDefault();
 });
 
+// Handle incoming data
+ipcRenderer.on('message', (e, data) =>{
+    console.log(data);
+});
+
 // Request journeys
 function getJourneys(e){
     const data = e.target.elements;
