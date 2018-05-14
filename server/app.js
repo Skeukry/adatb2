@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu, globalShortcut, ipcMain} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain} = require('electron');
 const database = require('./database.js');
 const CLIENT = process.cwd() + '/client';
 let window;
@@ -19,19 +19,17 @@ function createWindow(){
 
     window = new BrowserWindow({
         title: 'TrainGod',
-        backgroundColor: '#84290A',
+        backgroundColor: '#842907',
         show: false,
         width: 1024,
         height: 768,
         minWidth: 640,
         minHeight: 480,
         webPreferences: {devTools: true},
-        nodeIntegration: false,
         icon: `${CLIENT}/img/icon.png`
     });
 
     window.loadURL(`file://${CLIENT}/html/index.html`);
-    // globalShortcut.register('F12', () => window.toggleDevTools());
 
     window.once('ready-to-show', () =>{
         // window.maximize();

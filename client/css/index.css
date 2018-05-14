@@ -1,8 +1,8 @@
 :root{
     /* Color palette */
-    /* bit.ly/2Hl4Lms */
-    --primary: #84290A;
-    --primary-light: #BA5634;
+    /* bit.ly/2wCpihr */
+    --primary: #842907;
+    --primary-light: #BA5631;
     --primary-dark: #530000;
     --primary-text: #FFFFFF;
     --secondary: #37474F;
@@ -46,7 +46,7 @@ input{
     padding: 0;
     overflow: hidden;
     background-color: var(--primary-dark);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 #nav li{
