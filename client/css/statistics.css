@@ -1,0 +1,32 @@
+#section{
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#spare{
+    font-weight: bold;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    margin: 12px;
+}
+
+.flex_row-left{
+    flex-basis: 60%;
+    text-align: right;
+    padding-right: 2%;
+    align-self: flex-start;
+}
+
+.flex_row-right{
+    flex-basis: 40%;
+}
