@@ -22,18 +22,40 @@ window.addEventListener('click', e =>{
 
 
 // Handle incoming data
+let paymentInfo = null;
+
 ipcRenderer.on('message', (e, data) =>{
     switch(data.type){
         case 'search':
-            document.getElementById('results').innerText = JSON.stringify(data.data, null, 4);
+            for(let jarat of data.list){
+                const tr = document.createElement('tr');
+                for(let attr of jarat){
+                    const td = document.createElement('td');
+                    td.innerText = attr;
+                    tr.appendChild(td);
+                }
+
+                const btnTD = document.createElement('td');
+                const btn = document.createElement('input');
+                btn.type = 'button';
+                btn.value = 'Jegyvásárlás';
+                btn.addEventListener('click', () =>{
+                    paymentInfo = jarat;
+                    loadPage('payment');
+                });
+
+                btnTD.appendChild(btn);
+                tr.appendChild(btnTD);
+                document.getElementById('results').appendChild(tr);
+            }
             break;
 
         case 'suggestion':
             if(suggInfo && suggInfo.i.value !== suggInfo.v){
                 const inp = suggInfo.i;
-                suggInfo = false;
+                suggInfo = null;
                 getSuggestion(inp);
-            }else suggInfo = false;
+            }else suggInfo = null;
 
             suggList = document.getElementById('suggestions');
             if(!suggList) break;
@@ -54,7 +76,7 @@ ipcRenderer.on('message', (e, data) =>{
 });
 
 // Handle suggestions
-let suggList, suggInfo = false;
+let suggList, suggInfo = null;
 
 function getSuggestion(inp){
     if(suggInfo || inp.value.length < 3) return;
@@ -89,6 +111,7 @@ function getStatistics(){
 
 function loadPage(link){
     const xhttp = new XMLHttpRequest();
+    if(typeof link === 'string') link = {name: link};
 
     xhttp.addEventListener('load', function(){
         // Insert new html data
@@ -115,7 +138,7 @@ function loadPage(link){
 
     // Update active_menu
     for(let l of links) l.parentNode.classList.remove('active_menu');
-    link.parentNode.classList.add('active_menu');
+    if(link.parentNode) link.parentNode.classList.add('active_menu');
 
     // Update title and load css
     document.title = 'TrainGod - ' + link.innerText;
