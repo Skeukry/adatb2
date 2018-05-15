@@ -40,5 +40,11 @@ function handleData(data){
                 process.send({type: data.type, value: res.rows});
             });
             break;
+
+        case 'statistics':
+            connection.execute(sql.getStatistics).then(res =>{
+                process.send({type: data.type, value: res.rows[0]});
+            });
+            break;
     }
 }

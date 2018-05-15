@@ -45,6 +45,11 @@ ipcRenderer.on('message', (e, data) =>{
                 suggList.appendChild(opt);
             }
             break;
+
+        case 'statistics':
+            document.getElementById('spare').innerText = Math.floor(data.value) + ' Ft';
+            // document.getElementById('spare').innerText = Math.floor(data.value / 1000) + ' ezer Ft';
+            break;
     }
 });
 
@@ -77,6 +82,10 @@ function getJourneys(e){
     e.preventDefault();
 }
 
+function getStatistics(){
+    ipcRenderer.send('message', {type: 'statistics'});
+}
+
 
 function loadPage(link){
     const xhttp = new XMLHttpRequest();
@@ -94,8 +103,10 @@ function loadPage(link){
             now = now.toJSON().slice(0, 10);
 
             inp.value = now;
-            inp.min = now;
+            // inp.min = now;
         }
+
+        if(link.name === 'statistics') getStatistics();
     });
 
     // Request html data

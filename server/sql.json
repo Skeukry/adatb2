@@ -1,5 +1,7 @@
 {
-    "getJourneys": "SELECT jaratszam, uthossz, indulasi_ido, erkezesi_ido FROM Jarat INNER JOIN Allomas src ON src.id = indulasi_hely INNER JOIN Allomas dst ON dst.id = erkezesi_hely WHERE src.nev = :ih AND dst.nev = :eh AND indulasi_ido >= :ii",
+    "getJourneys": "SELECT jaratszam, uthossz, indulasi_ido, erkezesi_ido FROM Jarat LEFT JOIN Allomas src ON src.id = indulasi_hely LEFT JOIN Allomas dst ON dst.id = erkezesi_hely WHERE src.nev = :ih AND dst.nev = :eh AND indulasi_ido >= :ii AND indulasi_ido < :ii + 1",
 
-    "getSuggestion": "SELECT * FROM(SELECT nev FROM Allomas ORDER BY UTL_MATCH.jaro_winkler(nev, :inp) DESC) WHERE ROWNUM <= 10"
+    "getSuggestion": "SELECT * FROM(SELECT nev FROM Allomas ORDER BY UTL_MATCH.jaro_winkler(nev, :inp) DESC) WHERE ROWNUM <= 10",
+
+    "getStatistics": "SELECT SUM(kedv.szorzo * kat.ar) FROM Jegy LEFT JOIN Arkategoria kat ON kat.cimke = kocsiosztaly AND Jegy.jaratszam = kat.jaratszam LEFT JOIN Kedvezmeny kedv ON kedvezmeny = kedv.id"
 }

@@ -38,9 +38,9 @@ input{
     font-family: var(--font);
 }
 
-/*input::-webkit-calendar-picker-indicator{
+input[type="search"]::-webkit-calendar-picker-indicator{
     display: none;
-}*/
+}
 
 #nav{
     list-style-type: none;
