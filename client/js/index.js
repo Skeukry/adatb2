@@ -106,7 +106,7 @@ function loadPage(link){
     for(let l of links) l.parentNode.classList.remove('active_menu');
     link.parentNode.classList.add('active_menu');
 
-    // Update tite and load css
+    // Update title and load css
     document.title = 'TrainGod - ' + link.innerText;
     document.getElementById('pageStyle').href = `../css/${link.name}.css`;
 }

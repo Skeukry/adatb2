@@ -9,9 +9,7 @@
     --secondary-light: #62727B;
     --secondary-dark: #102027;
     --secondary-text: #FFFFFF;
-    --primary-font: 'Montserrat', sans-serif;
-    /* The secondary font maybe not suitable for us because of the Latin char support */
-    --secondary-font: 'Andika', sans-serif;
+    --font: 'Montserrat', sans-serif;
 }
 
 html, body{
@@ -26,7 +24,7 @@ html, body{
 }
 
 body{
-    font-family: var(--primary-font);
+    font-family: var(--font);
     background-color: var(--primary);
     color: var(--primary-text);
 }
@@ -37,7 +35,7 @@ a{
 
 input{
     font-size: 16px;
-    font-family: var(--primary-font);
+    font-family: var(--font);
 }
 
 /*input::-webkit-calendar-picker-indicator{
