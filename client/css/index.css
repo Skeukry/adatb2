@@ -40,6 +40,10 @@ input{
     font-family: var(--primary-font);
 }
 
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
 #nav{
     list-style-type: none;
     margin: 0;

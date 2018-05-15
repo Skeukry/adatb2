@@ -35,13 +35,21 @@ ipcRenderer.on('message', (e, data) =>{
                 getSuggestion(inp);
             }else suggInfo = false;
 
-            document.getElementById('results').innerText = data.value;
+            suggList = document.getElementById('suggestions');
+            if(!suggList) break;
+
+            while(suggList.lastChild) suggList.removeChild(suggList.lastChild);
+            for(let s of data.value){
+                const opt = document.createElement('option');
+                opt.value = s;
+                suggList.appendChild(opt);
+            }
             break;
     }
 });
 
 // Handle suggestions
-let suggInfo = false;
+let suggList, suggInfo = false;
 
 function getSuggestion(inp){
     if(suggInfo || inp.value.length < 3) return;

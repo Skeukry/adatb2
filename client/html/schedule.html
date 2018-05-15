@@ -1,10 +1,15 @@
 <h1>Járat kereső</h1>
 
 <form onsubmit="getJourneys(event)">
-    <label>Honnan<input type="text" name="from" required oninput="getSuggestion(this)"></label><br>
-    <label>Hová<input type="text" name="to" required oninput="getSuggestion(this)"></label><br>
+    <label>Honnan<input type="text" name="from" required list="suggestions" oninput="getSuggestion(this)"></label><br>
+    <label>Hová<input type="text" name="to" required list="suggestions" oninput="getSuggestion(this)"></label><br>
     <label>Mikor <input type="date" name="time" required></label><br>
     <input value="Keres" type="submit">
+    <datalist id="suggestions">
+        <option value="ada1"></option>
+        <option value="ada2"></option>
+        <option value="ada3"></option>
+    </datalist>
 </form>
 
 <div id="results"></div>
