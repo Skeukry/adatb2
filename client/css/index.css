@@ -12,6 +12,11 @@
     --font: 'Montserrat', sans-serif;
 }
 
+::selection {
+    color: var(--primary-text);
+    background: var(--secondary-light);
+}
+
 html, body{
     position: absolute;
     top: 0;

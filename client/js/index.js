@@ -46,7 +46,7 @@ ipcRenderer.on('message', (e, data) =>{
 
                 btnTD.appendChild(btn);
                 tr.appendChild(btnTD);
-                document.getElementById('results').appendChild(tr);
+                document.getElementById('results').getElementsByTagName('tbody')[0].appendChild(tr);
             }
             break;
 
