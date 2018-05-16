@@ -27,7 +27,20 @@ let paymentInfo = null;
 ipcRenderer.on('message', (e, data) =>{
     switch(data.type){
         case 'search':
+            let tb = document.getElementById('results').getElementsByTagName('tbody')[0];
+            while(tb.lastChild) tb.removeChild(tb.lastChild);
+
             for(let jarat of data.list){
+                // Convert date
+                const toTime = d => d.toLocaleTimeString().slice(0, -3);
+                const from = new Date(jarat[2]);
+                const to = new Date(jarat[3]);
+                const long = (to.getTime() - from.getTime()) / 1000 / 60;
+
+                jarat[2] = toTime(from);
+                jarat[3] = toTime(to);
+                jarat.push(Math.floor(long / 60) + ':' + (Math.floor(long) % 60).toString().padStart(2, '0'));
+
                 const tr = document.createElement('tr');
                 for(let attr of jarat){
                     const td = document.createElement('td');
@@ -46,7 +59,7 @@ ipcRenderer.on('message', (e, data) =>{
 
                 btnTD.appendChild(btn);
                 tr.appendChild(btnTD);
-                document.getElementById('results').getElementsByTagName('tbody')[0].appendChild(tr);
+                tb.appendChild(tr);
             }
             document.getElementById('hidden').removeAttribute('hidden');
 
