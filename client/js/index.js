@@ -48,6 +48,7 @@ ipcRenderer.on('message', (e, data) =>{
                 tr.appendChild(btnTD);
                 document.getElementById('results').getElementsByTagName('tbody')[0].appendChild(tr);
             }
+            document.getElementById('hidden').removeAttribute('hidden');
             break;
 
         case 'suggestion':

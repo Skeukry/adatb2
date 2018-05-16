@@ -46,9 +46,15 @@ tbody tr:hover{
     background-color: var(--primary-dark);
 }
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 #results{
     border-collapse: collapse;
     width: 100%;
+    animation: fadein 1s;
 }
 
 #results input[type=button]{
