@@ -3,5 +3,11 @@
 
     "getSuggestion": "SELECT * FROM(SELECT nev FROM Allomas ORDER BY UTL_MATCH.jaro_winkler(nev, :inp) DESC) WHERE ROWNUM <= 10",
 
-    "getStatistics": "SELECT SUM(kedv.szorzo * kat.ar) FROM Jegy LEFT JOIN Arkategoria kat ON kat.cimke = kocsiosztaly AND Jegy.jaratszam = kat.jaratszam LEFT JOIN Kedvezmeny kedv ON kedvezmeny = kedv.id"
+    "getStatistics": "SELECT SUM(kedv.szorzo * kat.ar) FROM Jegy LEFT JOIN Arkategoria kat ON kat.cimke = kocsiosztaly AND Jegy.jaratszam = kat.jaratszam LEFT JOIN Kedvezmeny kedv ON kedvezmeny = kedv.id",
+
+    "createTicket": "INSERT INTO Jegy VALUES (:uuid, :nev, :osztaly, :jarat, :kedv)",
+
+    "getKedvezmeny": "SELECT * FROM Kedvezmeny",
+
+    "getOsztaly": "SELECT ar, cimke FROM Arkategoria WHERE jaratszam = :jarat"
 }

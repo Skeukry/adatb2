@@ -46,5 +46,28 @@ function handleData(data){
                 process.send({type: data.type, value: res.rows[0]});
             });
             break;
+
+        case 'ticket':
+            connection.execute(sql.createTicket, [UUID(), data.name, data.osztaly, data.jarat, data.kedv]);
+            break;
+
+        case 'kedvezemny':
+            connection.execute(sql.getKedvezmeny).then(res =>{
+                process.send({type: data.type, value: res.rows});
+            });
+            break;
+
+        case 'kocsiosztaly':
+            connection.execute(sql.getOsztaly, [data.value]).then(res =>{
+                process.send({type: data.type, value: res.rows});
+            });
+            break;
     }
+}
+
+// Generates a v4 UUID
+function UUID(){
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.randomBytes(1)[0] & 15>>c / 4).toString(16)
+    );
 }

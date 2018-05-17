@@ -1,58 +1,38 @@
 <h1>Jegyvásárlás</h1>
 
-<form>
+<form onsubmit="createTicket(event)">
     <label>Utas neve<input type="text" name="passenger_name" required></label><br>
     <div class="flex">
         <div class="flex_row">
             <div class="flex_row-left">
-                <p>Jegy típusa</p>
+                <label for="carriage_class">Kocsiosztály</label>
             </div>
             <div class="flex_row-right">
-                <label><input type="radio" name="ticket_type" value="1" required>menetjegy és helyjegy</label><br>
-                <label><input type="radio" name="ticket_type" value="2" required>csak helyjegy</label><br>
-
-                <!--TODO check if we need this-->
-                <label><input type="radio" name="ticket_type" value="3" required>csak kocsiosztály különbözeti jegy</label><br>
-
+                <select id="carriage_class" name="carriage_class" required></select>
             </div>
         </div>
+
         <div class="flex_row">
             <div class="flex_row-left">
                 <p>Kedvezmény</p>
             </div>
             <div class="flex_row-right">
-                <select title="Válassz egyet!" required>
-                    <!--TODO add DB output here as options-->
-                    <optgroup label="placeholder0">
-                        <option value="a">placeholder1</option>
-                        <option value="s">placeholder2</option>
-                        <option value="d">placeholder3</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-        <div class="flex_row">
-            <div class="flex_row-left">
-                <p>Kocsiosztály</p>
-            </div>
-            <div class="flex_row-right">
-                <label><input type="radio" name="carriage_class" value="1" required>1. osztály</label><br>
-                <label><input type="radio" name="carriage_class" value="2" required>2. osztály</label><br>
+                <select id="kedvezmeny" name="kedvezmeny" title="Válassz egyet!" required></select>
             </div>
         </div>
     </div>
     <hr>
+
     <div class="flex">
         <div class="flex_row">
             <div class="flex_row-left">
                 <p>Fizetendő:</p>
             </div>
             <div class="flex_row-right">
-                <!--TODO add DB output here as the amount to be paid-->
                 <p>1000 Ft</p>
             </div>
         </div>
     </div>
-    <!--TODO kappa rögzítettük :D-->
-    <input id="btn" value="Fizetés" type="submit" onclick='alert("Rendelésed rögzítettük, jó utat!")'>
+
+    <input id="btn" value="Fizetés" type="submit">
 </form>

@@ -94,6 +94,26 @@ ipcRenderer.on('message', (e, data) =>{
             document.getElementById('spare').innerText = Math.floor(data.value) + ' Ft';
             // document.getElementById('spare').innerText = Math.floor(data.value / 1000) + ' ezer Ft';
             break;
+
+        case 'kedvezemny':
+            const k = document.getElementById('carriage_class');
+            for(let v of data.value){
+                const o = document.createElement('option');
+                o.innerText = v[2];
+                o.value = v[0];
+                k.appendChild(o);
+            }
+            break;
+
+        case 'kocsiosztaly':
+            const k2 = document.getElementById('kedvezmeny');
+            for(let v of data.value){
+                const o = document.createElement('option');
+                o.innerText = v[1];
+                o.value = v[0];
+                k2.appendChild(o);
+            }
+            break;
     }
 });
 
@@ -130,6 +150,26 @@ function getStatistics(){
     ipcRenderer.send('message', {type: 'statistics'});
 }
 
+function getPayment(){
+    ipcRenderer.send('message', {type: 'kedvezemny'});
+    ipcRenderer.send('message', {
+        type: 'kocsiosztaly',
+        value: paymentInfo[0]
+    });
+}
+
+function createTicket(e){
+    const data = e.target.elements;
+    ipcRenderer.send('message', {
+        type: 'statistics',
+        name: data.passenger_name.value,
+        osztaly: data.carriage_class.value,
+        jarat: paymentInfo[0],
+        kedv: data.kedvezmeny.value
+    });
+    e.preventDefault();
+}
+
 
 function loadPage(link){
     const xhttp = new XMLHttpRequest();
@@ -152,6 +192,7 @@ function loadPage(link){
         }
 
         if(link.name === 'statistics') getStatistics();
+        if(link.name === 'payment') getPayment();
     });
 
     // Request html data
