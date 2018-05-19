@@ -4,6 +4,7 @@ const CLIENT = process.cwd() + '/client';
 let window;
 
 
+app.commandLine.appendSwitch('force-color-profile', 'srgb');
 app.on('ready', createWindow);
 app.on('window-all-closed', () => database.close(err =>{
     if(!err) app.quit();
