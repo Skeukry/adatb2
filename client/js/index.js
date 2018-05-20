@@ -62,13 +62,7 @@ ipcRenderer.on('message', (e, data) =>{
                 tb.appendChild(tr);
             }
             document.getElementById('hidden').removeAttribute('hidden');
-
-            /*
-            // It works only on electron 2.x.x :'(
-            // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-
             document.getElementById('hidden').scrollIntoView({behavior: "smooth"});
-            */
 
             break;
 
